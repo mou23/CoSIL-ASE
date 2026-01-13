@@ -16,7 +16,7 @@ from afl.util.preprocess_data import (
 )
 from afl.util.utils import load_existing_instance_ids, load_jsonl, setup_logger
 
-MAX_RETRIES = 5
+MAX_RETRIES = 3
 
 def localize_instance(
     bug, args, swe_bench_data, start_file_locs, existing_instance_ids, write_lock=None

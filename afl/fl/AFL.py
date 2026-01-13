@@ -38,7 +38,7 @@ class AFL(FL):
 
         self.MAX_CONTEXT_LENGTH = 32768 if "qwen2.5-7b" in model_name else 100000
 
-    def _parse_top5_file(self, content: str) -> list[str]:
+    def _parse_top10_file(self, content: str) -> list[str]:
         if content.count("```") % 2 != 0:
             return []
         extracted_output = re.findall(r'```(?:.*?\n)?(.*?)```', content, re.DOTALL)
@@ -378,7 +378,7 @@ class AFL(FL):
         raw_output = traj["response"]
 
         self.logger.info(raw_output)
-        model_found_files = self._parse_top5_file(raw_output)
+        model_found_files = self._parse_top10_file(raw_output)
         files, classes, functions = get_full_file_paths_and_classes_and_functions(
             self.structure
         )
@@ -456,7 +456,7 @@ class AFL(FL):
             traj["prompt"] = message
             raw_output = traj["response"]
         self.logger.info(raw_output)
-        model_found_files = self._parse_top5_file(raw_output)
+        model_found_files = self._parse_top10_file(raw_output)
 
         import difflib
         def get_best_match(file: str, all_files: list[str], cutoff: float = 0.8) -> str:
@@ -471,7 +471,7 @@ class AFL(FL):
             corrcted_tpl = format_correct_prompt.format(res=raw_output)
             formated_res = model.codegen([{"role": "user", "content": corrcted_tpl}], num_samples=1)[0]["response"]
             self.logger.info(formated_res)
-            model_found_files = self._parse_top5_file(formated_res)
+            model_found_files = self._parse_top10_file(formated_res)
             found_files = [f for f in model_found_files if f in all_files]
             if len(found_files) == 0:
                 found_files = [get_best_match(f, all_files) for f in model_found_files]
@@ -480,7 +480,7 @@ class AFL(FL):
                                                     structure=show_project_structure(self.structure).strip(), pre_files=found_files)}],
                                           num_samples=1)[0]["response"]
         self.logger.info(reflection_result)
-        reflection_files = self._parse_top5_file(reflection_result)
+        reflection_files = self._parse_top10_file(reflection_result)
         reflection_files = [f for f in reflection_files if f in all_files]
         if len(reflection_files) == 0:
             reflection_files = [get_best_match(f, all_files) for f in reflection_files]
@@ -706,7 +706,7 @@ False
         raw_output = traj["response"]
 
         self.logger.info(raw_output)
-        model_found_files = self._parse_top5_file(raw_output)
+        model_found_files = self._parse_top10_file(raw_output)
 
         import difflib
         def get_best_match(file: str, all_files: list[str], cutoff: float = 0.8) -> str:
@@ -722,7 +722,7 @@ False
             corrcted_tpl = format_correct_prompt.format(res=raw_output)
             formated_res = model.codegen([{"role": "user", "content": corrcted_tpl}], num_samples=1)[0]["response"]
             self.logger.info(formated_res)
-            model_found_files = self._parse_top5_file(formated_res)
+            model_found_files = self._parse_top10_file(formated_res)
             found_files = [f for f in model_found_files if f in all_files]
             if len(found_files) == 0:
                 found_files = [get_best_match(f, all_files) for f in model_found_files]
@@ -745,7 +745,7 @@ False
                                                                        pre_files=found_files)}],
             num_samples=1)[0]["response"]
         self.logger.info(reflection_result)
-        reflection_files = self._parse_top5_file(reflection_result)
+        reflection_files = self._parse_top10_file(reflection_result)
         reflection_files = [f for f in reflection_files if f in all_files]
         if len(reflection_files) == 0:
             reflection_files = [get_best_match(f, all_files) for f in reflection_files]
@@ -816,7 +816,7 @@ False
             traj = model.codegen(message, num_samples=1)[0]
             traj["prompt"] = message
             raw_output = traj["response"]
-        model_found_files = self._parse_top5_file(raw_output)
+        model_found_files = self._parse_top10_file(raw_output)
 
         found_files = [f for f in model_found_files if f in all_files]
 
@@ -923,7 +923,7 @@ False
         raw_output = traj["response"]
 
         self.logger.info(raw_output)
-        model_found_files = self._parse_top5_file(raw_output)
+        model_found_files = self._parse_top10_file(raw_output)
 
         # extract the first-order module graph context
         import_content = ""
@@ -943,7 +943,7 @@ False
                                                                        pre_files=model_found_files)}],
             num_samples=1)[0]["response"]
         self.logger.info(reflection_result)
-        reflection_files = self._parse_top5_file(reflection_result)
+        reflection_files = self._parse_top10_file(reflection_result)
 
 
         return (

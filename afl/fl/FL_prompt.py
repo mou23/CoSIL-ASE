@@ -98,7 +98,7 @@ The bug report is as follows:
 
 file_system_prompt = """
 You will be presented with a bug report with repository structure and tools (functions) to access the source code of the system under test (SUT).
-Your task is to locate the top-5 most likely culprit files based on the bug report and the information you retrieve using given functions.
+Your task is to locate the top-10 most likely culprit files based on the bug report and the information you retrieve using given functions.
 {functions}
 You have {max_try} chances to call function.
 You can only call 1 function once.
@@ -107,7 +107,7 @@ The formal parameter file_name of function 'get_code_of_file' takes the fullpath
 
 file_system_prompt_without_tool = """
 You will be presented with a bug report with repository structure to access the source code of the system under test (SUT).
-Your task is to locate the top-5 most likely culprit files based on the bug report.
+Your task is to locate the top-10 most likely culprit files based on the bug report.
 """
 
 file_tool_prompt = """
@@ -117,7 +117,7 @@ Function calls you can use are as follows:
 """
 
 file_summary = """
-Based on the available information, reconfirm and provide complete name of the top-5 most likely culprit files for the bug. 
+Based on the available information, reconfirm and provide complete name of the top-10 most likely culprit files for the bug. 
 Since your answer will be processed automatically, please give your answer in the format as follows.
 The returned files should be separated by new lines ordered by most to least important and wrapped with ```.
 ```
@@ -126,6 +126,11 @@ file2.py
 file3.py
 file4.py
 file5.py
+file6.py
+file7.py
+file8.py
+file9.py
+file10.py
 ```
 Replace the 'file1.py' with the actual file path.
 For example, 
@@ -158,7 +163,7 @@ In order to locate accurately, you can pre-select {pre_select_num} files, then c
 location_system_prompt = """
 You will be presented with a bug report and tools (functions) to access the source code of the system under test (SUT).
 Since the modification is based on the code repository, the modified locations may include files, classes, and functions, and the modifications may be in the form of addition, deletion, or update.
-Your task is to locate the top-5 most likely culprit locations based on the bug report and the information you retrieve using given functions.
+Your task is to locate the top-10 most likely culprit locations based on the bug report and the information you retrieve using given functions.
 {functions}
 You have {max_try} chances to call function.
 """
@@ -166,12 +171,12 @@ You have {max_try} chances to call function.
 location_system_prompt_ablation = """
 You will be presented with a bug report to access the source code of the system under test (SUT).
 Since the modification is based on the code repository, the modified locations may include files, classes, and functions, and the modifications may be in the form of addition, deletion, or update.
-Your task is to locate the top-5 most likely culprit locations based on the bug report.
+Your task is to locate the top-10 most likely culprit locations based on the bug report.
 """
 
 location_guidence_prmpt = """
 Let's locate the faulty file step by step using reasoning and function calls. 
-I have pre-identified top-5 files that may contain bugs. There stuctures are as follows:
+I have pre-identified top-10 files that may contain bugs. There stuctures are as follows:
 {bug_file_list}
 The formal parameter 'file_name' takes the value in "file:"
 The formal parameter 'ckass_name' takes the value in "class:"
@@ -185,7 +190,7 @@ Don't make the first function call in this message.
 
 location_guidence_prmpt_ablation = """
 Let's locate the faulty file step by step by reasoning. 
-I have pre-identified top-5 files that may contain bugs.
+I have pre-identified top-10 files that may contain bugs.
 There stuctures are as follows:
 {bug_file_list}
 """
@@ -280,7 +285,7 @@ Please help me corrct the following result.
 
 file_reflection_prompt = """
 Please look through the following GitHub problem description and Repository structure and provide a list of files that one would need to edit to fix the problem.
-I have already find 5 relevent files. Accrording to the import relations, construct the call graph first.
+I have already find 10 relevent files. Accrording to the import relations, construct the call graph first.
 Then, Rank them again and reflect the result.
 
 ### GitHub Problem Description ###
@@ -303,7 +308,7 @@ Then, Rank them again and reflect the result.
 ###
 
 
-Please only provide the full path and return top 5 files.
+Please only provide the full path and return top 10 files.
 The returned files should be separated by new lines ordered by most to least important and wrapped with ```
 For example:
 ```
@@ -312,6 +317,11 @@ file2.py
 file3.py
 file4.py
 file5.py
+file6.py
+file7.py   
+file8.py
+file9.py
+file10.py    
 ```
 Note: file1.py indicates the top-1 file, file2.py indicates the top-2 file, and so on. Do not include test files.
 """
