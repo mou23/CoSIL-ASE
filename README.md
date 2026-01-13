@@ -1,4 +1,5 @@
 # Issue Localization via LLM-Driven Iteritive Code Graph Searching
+**This repository is a modified version of: https://github.com/ZJU-CTAG/CoSIL**
 
 In the experiment, we use `afl` to represent our approach, CoSIL.
 
