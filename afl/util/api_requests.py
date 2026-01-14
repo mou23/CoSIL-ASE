@@ -41,7 +41,7 @@ def create_chatgpt_config(
     temperature: float = 1,
     batch_size: int = 1,
     system_message: str = "You are a debugging assistant of our Python software.",
-    model: str = "gpt-3.5-turbo",
+    model: str = "gpt-4o-mini",
 ) -> Dict:
     if isinstance(message, list):
         config = {

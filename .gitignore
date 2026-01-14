@@ -1,0 +1,11 @@
+swe-res/
+res/
+run_lite.ps1
+afl/__init__.py
+afl/__pycache__/
+afl/fl/__init__.py
+afl/fl/__pycache__/
+afl/util/__init__.py
+afl/util/__pycache__/
+get_repo_structure/__pycache__/
+repo_structures/

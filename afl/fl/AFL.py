@@ -2,8 +2,8 @@ import re
 from abc import ABC
 from typing import Any
 
-from FL_prompt import *
-from FL_tools import *
+from afl.fl.FL_prompt import *
+from afl.fl.FL_tools import *
 from afl.util.api_requests import num_tokens_from_messages
 from afl.util.postprocess_data import extract_code_blocks, extract_locs_for_files, extract_func_locs_for_files
 from afl.util.preprocess_data import (get_repo_files, get_full_file_paths_and_classes_and_functions, correct_file_paths,

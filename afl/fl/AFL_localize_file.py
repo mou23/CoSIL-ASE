@@ -237,7 +237,7 @@ def main():
     parser.add_argument(
         "--model",
         type=str,
-        default="gpt-4o-2024-05-13",
+        default="gpt-4o-mini",
     )
     parser.add_argument(
         "--backend",
