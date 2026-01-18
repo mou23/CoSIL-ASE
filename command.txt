@@ -1,0 +1,5 @@
+powershell
+C:/Users/rafed/Desktop/cosil/CoSIL-ASE/myenv/Scripts/Activate.ps1
+$env:PYTHONPATH = "$PWD"                          
+$env:PROJECT_FILE_LOC = "repo_structures" 
+python -m afl.fl.AFL_localize_file --file_level --model gpt-4o-mini --backend openai --num_threads 1 --output_folder swe-res-3 --skip_existing

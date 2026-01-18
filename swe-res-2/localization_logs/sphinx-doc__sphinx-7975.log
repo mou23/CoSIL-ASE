@@ -1,0 +1,18 @@
+2026-01-13 22:46:34,781 - INFO - Processing bug sphinx-doc__sphinx-7975
+2026-01-13 22:46:34,953 - INFO - ================ localize sphinx-doc__sphinx-7975 ================
+2026-01-13 22:46:35,066 - INFO - ================================================================================
+2026-01-13 22:46:35,319 - INFO - Creating API request
+2026-01-13 22:46:40,705 - INFO - Creating API request
+2026-01-13 22:46:42,746 - INFO - API response ChatCompletion(id='chatcmpl-CxowIgUkRWoMrTsxOweq0mqz2SHwD', choices=[Choice(finish_reason='stop', index=0, logprobs=None, message=ChatCompletionMessage(content='```\nsphinx/domains/index.py\nsphinx/environment/collectors/indexentries.py\nsphinx/builders/html/transforms.py\nsphinx/writers/html.py\nsphinx/writers/html5.py\nsphinx/application.py\nsphinx/extension.py\nsphinx/util/rst.py\nsphinx/config.py\nsphinx/builders/html/__init__.py\n```', refusal=None, role='assistant', annotations=[], audio=None, function_call=None, tool_calls=None))], created=1768373198, model='gpt-4o-mini-2024-07-18', object='chat.completion', service_tier='default', system_fingerprint='fp_29330a9688', usage=CompletionUsage(completion_tokens=77, prompt_tokens=3154, total_tokens=3231, completion_tokens_details=CompletionTokensDetails(accepted_prediction_tokens=0, audio_tokens=0, reasoning_tokens=0, rejected_prediction_tokens=0), prompt_tokens_details=PromptTokensDetails(audio_tokens=0, cached_tokens=0)))
+2026-01-13 22:46:42,763 - INFO - ```
+sphinx/domains/index.py
+sphinx/environment/collectors/indexentries.py
+sphinx/builders/html/transforms.py
+sphinx/writers/html.py
+sphinx/writers/html5.py
+sphinx/application.py
+sphinx/extension.py
+sphinx/util/rst.py
+sphinx/config.py
+sphinx/builders/html/__init__.py
+```

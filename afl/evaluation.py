@@ -85,7 +85,7 @@ def calculate_metrics(bug_results):
 
 
 def load_output(root):
-    pattern = os.path.join(root, "swe-res", "loc_outputs.jsonl")
+    pattern = os.path.join(root, "swe-res-3", "loc_outputs.jsonl")
     paths = glob(pattern)
     if not paths:
         raise SystemExit(f"No files matched: {pattern}")
@@ -133,6 +133,7 @@ def main(root):
 
         suspicious_files = results.get(instance_id, [])
         if not suspicious_files:
+            print(f"Missing result for {instance_id}")
             missing_result += 1
 
         bug_results[instance_id] = {
